@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:bind="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="viewModel"
+            type="com.ausom.moobee.ui.movie.list.item.MovieListItemViewModel" />
+    </data>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_small"
+        android:layout_marginEnd="@dimen/margin_small"
+        android:layout_marginBottom="@dimen/margin_medium"
+        android:paddingBottom="@dimen/margin_small"
+        app:cardCornerRadius="@dimen/movie_list_item_corner_radius"
+        app:cardElevation="@dimen/movie_list_item_elevation">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="?android:selectableItemBackground"
+            android:clickable="true"
+            android:focusable="true"
+            android:onClick="@{(v) -> viewModel.onClick()}">
+
+            <ImageView
+                android:id="@+id/movieThumb"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/movie_thumb_height"
+                android:adjustViewBounds="true"
+                android:scaleType="centerCrop"
+                android:transitionName="@{viewModel.movieModel.id}"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                bind:imageUrl="@{viewModel.movieModel.poster}"
+                bind:src="@drawable/ic_launcher_background" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="@dimen/margin_small"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/movieThumb">
+
+                <TextView
+                    android:id="@+id/movieTitle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:minWidth="1dp"
+                    android:minHeight="1dp"
+                    android:text="@{viewModel.movieModel.title}"
+                    bind:text="Title"
+                    style="@style/MarqueeTextView"
+                    android:marqueeRepeatLimit="marquee_forever"
+                    android:textStyle="bold"
+                    android:textSize="18sp"/>
+
+                <TextView
+                    android:id="@+id/movieSubTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:ellipsize="end"
+                    android:maxLines="3"
+                    android:text="@{viewModel.movieModel.subtitle}"
+                    bind:text="Subtitle" />
+            </LinearLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+</layout>

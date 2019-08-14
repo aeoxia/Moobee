@@ -1,0 +1,60 @@
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
+apply plugin: 'realm-android'
+
+android {
+    compileSdkVersion 28
+
+
+    defaultConfig {
+        minSdkVersion 21
+        targetSdkVersion 28
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility = 1.8
+        targetCompatibility = 1.8
+    }
+
+    kotlinOptions {
+        jvmTarget = "1.8"
+    }
+}
+
+dependencies {
+    implementation project(':domain')
+
+    implementation app_dependencies.google.dagger
+    kapt app_dependencies.google.kapt_dagger_compiler
+
+    implementation app_dependencies.google.dagger_android
+    implementation app_dependencies.google.dagger_android_support
+    kapt app_dependencies.google.kapt_dagger_android_processor
+
+    implementation app_dependencies.android.core_utils
+    implementation app_dependencies.android.core_ktx
+
+    implementation app_dependencies.github.coroutines
+    implementation app_dependencies.github.retrofit
+    implementation app_dependencies.github.retrofit_gson_converter
+    implementation app_dependencies.github.okhttp
+    implementation app_dependencies.github.okhttp_interceptor
+
+    implementation app_dependencies.github.zoned_date_time
+
+    implementation app_dependencies.kotlin_jre
+}

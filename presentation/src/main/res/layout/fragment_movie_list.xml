@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:bind="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+                name = "viewModel"
+                type = "com.ausom.moobee.ui.movie.list.MovieListViewModel"/>
+        <import type="com.ausom.moobee.R" />
+    </data>
+
+    <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/movieList"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:clipToPadding="false"
+            android:paddingStart="@dimen/margin_small"
+            android:paddingTop="@dimen/margin_small"
+            android:paddingEnd="@dimen/margin_small"
+            android:paddingBottom="@dimen/navigation_bar_offset"
+            app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+            app:spanCount="2"
+            bind:listitem="@layout/movie_item_layout"/>
+</layout>

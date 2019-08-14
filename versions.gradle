@@ -1,0 +1,123 @@
+/**
+ *Source largely taken from this OS repo: https://github.com/googlesamples/android-architecture-components/blob/master/GithubBrowserSample/versions.gradle
+ * Thank you to everyone involved in this awesome OS project!
+ *
+ * In this file, we basically build a tree of app_dependencies in a very DRY way.
+ **/
+
+//ext is a way to add extra data key/value pairs to a gradle domain object. Since it has no prefix,
+//it is short hand for project.ext in this case.
+//[:] is groovy syntax for creating a "Map" Object, which is a collection of key/value pairs
+
+//create a map of key/value pairs
+ext.app_dependencies = [:]
+ext.project_dependencies = [:]
+
+//pairs below
+def versions = [:]
+versions.gradle_tools = '3.4.2'
+versions.kotlin = "1.3.41"
+versions.coroutines = "1.2.1"
+versions.realm = "5.11.0"
+versions.constraint_layout = "2.0.0-beta2"
+versions.material = "1.1.0-alpha06"
+versions.support = "28.0.0"
+versions.gson = "2.8.5"
+versions.lifecycle = "2.0.0"
+versions.junit = "4.12"
+versions.support = "1.0.0"
+versions.core_ktx = "1.0.0"
+versions.support_test = "1.0.2"
+versions.mockito = "2.13.0"
+versions.espresso = "3.0.2"
+versions.glide = "4.9.0"
+versions.retrofit = "2.6.0"
+versions.okhttp = "3.14.2"
+versions.zxing_core = "3.3.0"
+versions.zxing_android_embedded = "3.6.0"
+versions.dagger = "2.23.1"
+versions.navigation = "2.1.0-alpha05"
+versions.appcompat = "1.0.2"
+versions.legacy = "1.0.0"
+versions.zoned_date_time = "1.1.0"
+versions.stetho = "1.5.1"
+versions.stetho_realm = "2.3.0"
+versions.play_services = "17.0.0"
+versions.javaxInjectVersion = "1"
+
+ext.project_dependencies.gradle_plugin = "com.android.tools.build:gradle:$versions.gradle_tools"
+ext.project_dependencies.kotlin_plugin = "org.jetbrains.kotlin:kotlin-gradle-plugin:$versions.kotlin"
+ext.project_dependencies.realm_plugin = "io.realm:realm-gradle-plugin:$versions.realm"
+ext.project_dependencies.navigation_plugin = "androidx.navigation:navigation-safe-args-gradle-plugin:$versions.navigation"
+
+def android = [:]
+android.appcompat = "androidx.appcompat:appcompat:$versions.appcompat"
+android.material = "com.google.android.material:material:$versions.material"
+android.design = "com.android.support:design:$versions.support"
+android.legacy = "androidx.legacy:legacy-support-v4:$versions.legacy"
+android.lifecycle_extensions = "android.arch.lifecycle:extensions:$versions.lifecycle"
+android.kapt_lifecycle_compiler = "android.arch.lifecycle:compiler:$versions.lifecycle"
+android.constraint_layout = "androidx.constraintlayout:constraintlayout:$versions.constraint_layout"
+android.core_utils = "androidx.legacy:legacy-support-core-utils:$versions.support"
+android.core_ktx = "androidx.core:core-ktx:$versions.core_ktx"
+android.play_services_location = "com.google.android.gms:play-services-location:$versions.play_services"
+ext.app_dependencies.android = android
+
+def github = [:]
+github.glide = "com.github.bumptech.glide:glide:$versions.glide"
+github.kapt_glide_compiler = "com.github.bumptech.glide:compiler:$versions.glide"
+github.coroutines = "org.jetbrains.kotlinx:kotlinx-coroutines-core:$versions.coroutines"
+github.retrofit = "com.squareup.retrofit2:retrofit:$versions.retrofit"
+github.retrofit_gson_converter = "com.squareup.retrofit2:converter-gson:$versions.retrofit"
+github.okhttp = "com.squareup.okhttp3:okhttp:$versions.okhttp"
+github.okhttp_interceptor = "com.squareup.okhttp3:logging-interceptor:$versions.okhttp"
+github.zxing = "com.google.zxing:core:$versions.zxing_core"
+github.zxing_android_embedded = "com.journeyapps:zxing-android-embedded:$versions.zxing_android_embedded"
+
+github.stetho  = "com.facebook.stetho:stetho:$versions.stetho" //for realm testing
+github.stetho_realm  = "com.uphyca:stetho_realm:$versions.stetho_realm"  //realm 4.0.0+ for older realm com.uphyca:stetho_realm:2.1.0
+github.zoned_date_time = "com.jakewharton.threetenabp:threetenabp:$versions.zoned_date_time" // Better dateTime-time support even on older Android versions
+ext.app_dependencies.github = github
+
+def google = [:]
+google.gson = "com.google.code.gson:gson:$versions.gson"
+google.dagger = "com.google.dagger:dagger:$versions.dagger"
+google.kapt_dagger_compiler = "com.google.dagger:dagger-compiler:$versions.dagger"
+
+google.dagger_android = "com.google.dagger:dagger-android:$versions.dagger"
+google.dagger_android_support = "com.google.dagger:dagger-android-support:$versions.dagger"
+google.kapt_dagger_android_processor = "com.google.dagger:dagger-android-processor:$versions.dagger"
+
+
+ext.app_dependencies.google = google
+
+def test = [:]
+test.junit = "junit:junit:$versions.junit"
+test.mockito = "org.mockito:mockito-core:$versions.mockito"
+test.kotlin_junit = "org.jetbrains.kotlin:kotlin-test-junit:$versions.kotlin"
+test.test_runner = "com.android.support.test:runner:$versions.support_test"
+test.test_rules = "com.android.support.test:rules:$versions.support_test"
+ext.app_dependencies.test = test
+
+ext.app_dependencies.kotlin_jre = "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$versions.kotlin"
+
+def navigation = [:]
+navigation.runtime_ktx = "androidx.navigation:navigation-runtime-ktx:$versions.navigation"
+navigation.fragment_ktx = "androidx.navigation:navigation-fragment-ktx:$versions.navigation"
+navigation.ui_ktx = "androidx.navigation:navigation-ui-ktx:$versions.navigation"
+navigation.safe_args_plugin = "androidx.navigation:navigation-safe-args-gradle-plugin:$versions.navigation"
+ext.app_dependencies.navigation = navigation
+
+def java = [:]
+java.javaxInject = "javax.inject:javax.inject:$versions.javaxInjectVersion"
+ext.app_dependencies.java = java
+
+
+//def addRepository(RepositoryHandler handler) {
+//    //use to import in project level repositories
+//    //example below
+//    handler.google()
+//    handler.jcenter()
+//    handler.maven { url 'https://oss.sonatype.org/content/repositories/snapshots' }
+//}
+//ext.addRepos = this.&addRepos

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="movie_list_item_height">150dp</dimen>
+    <dimen name="movie_list_item_corner_radius">3dp</dimen>
+    <dimen name="movie_list_item_elevation">5dp</dimen>
+    <dimen name="movie_detail_toolbar_height_expanded">320dp</dimen>
+    <dimen name="movie_detail_circle_radius">180dp</dimen>
+    <dimen name="movie_detail_toolbar_height_collapsed">80dp</dimen>
+    <dimen name="movie_detail_content_top_margin">40dp</dimen>
+    <dimen name="movie_detail_button_large">64dp</dimen>
+    <dimen name="movie_detail_button_small">48dp</dimen>
+    <dimen name="margin_small">5dp</dimen>
+    <dimen name="margin_medium">10dp</dimen>
+    <dimen name="margin_large">25dp</dimen>
+    <dimen name="status_bar_offset">24dp</dimen>
+    <dimen name="navigation_bar_offset">50dp</dimen>
+    <dimen name="spinner_size">84dp</dimen>
+    <dimen name="movie_thumb_height">350dp</dimen>
+    <dimen name="cardview_height">425dp</dimen>
+</resources>

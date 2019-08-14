@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">Moobee</string>
+    <string name="api_base_url">https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/</string>
+</resources>

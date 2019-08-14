@@ -1,0 +1,94 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
+apply plugin: 'realm-android'
+apply plugin: 'androidx.navigation.safeargs'
+
+androidExtensions {
+    experimental = true
+}
+android {
+    compileSdkVersion 28
+    defaultConfig {
+        applicationId "com.ausom.moobee"
+        minSdkVersion 21
+        targetSdkVersion 28
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    dataBinding {
+        enabled = true
+    }
+    compileOptions {
+        sourceCompatibility = 1.8
+        targetCompatibility = 1.8
+    }
+
+    kotlinOptions {
+        jvmTarget = "1.8"
+    }
+}
+
+repositories { //realm 4.0.0+
+    maven { url 'https://github.com/WickeDev/stetho-realm/raw/master/maven-repo' }
+}
+
+dependencies {
+    implementation project(':data')
+    implementation project(':domain')
+
+    implementation app_dependencies.android.appcompat
+    implementation app_dependencies.android.material
+    implementation app_dependencies.android.design
+    implementation app_dependencies.android.legacy
+    implementation app_dependencies.android.constraint_layout
+    implementation app_dependencies.android.core_utils
+    implementation app_dependencies.android.core_ktx
+    implementation app_dependencies.android.play_services_location
+
+    implementation app_dependencies.android.lifecycle_extensions
+    kapt app_dependencies.android.kapt_lifecycle_compiler
+
+    implementation app_dependencies.github.glide
+    kapt app_dependencies.github.kapt_glide_compiler
+
+    implementation app_dependencies.github.coroutines
+    implementation app_dependencies.github.retrofit
+    implementation app_dependencies.github.retrofit_gson_converter
+    implementation app_dependencies.github.okhttp
+    implementation app_dependencies.github.okhttp_interceptor
+    implementation app_dependencies.github.zxing
+    implementation (app_dependencies.github.zxing_android_embedded) { transitive = false }
+    implementation app_dependencies.github.stetho
+    implementation app_dependencies.github.stetho_realm
+    implementation app_dependencies.github.zoned_date_time
+
+    implementation app_dependencies.google.gson
+    implementation app_dependencies.google.dagger
+    kapt app_dependencies.google.kapt_dagger_compiler
+
+    implementation app_dependencies.google.dagger_android
+    implementation app_dependencies.google.dagger_android_support
+    kapt app_dependencies.google.kapt_dagger_android_processor
+
+
+    implementation app_dependencies.test.junit
+    implementation app_dependencies.test.mockito
+    implementation app_dependencies.test.kotlin_junit
+    implementation app_dependencies.test.test_runner
+    implementation app_dependencies.test.test_rules
+
+    implementation app_dependencies.kotlin_jre
+
+    implementation app_dependencies.navigation.runtime_ktx
+    implementation app_dependencies.navigation.fragment_ktx
+    implementation app_dependencies.navigation.ui_ktx
+}

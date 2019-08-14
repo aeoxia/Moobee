@@ -1,0 +1,33 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <!--<item name="actionBarStyle">@style/MyActionBarStyle</item>-->
+    </style>
+
+    <style name="MyActionBarStyle" parent="@style/Widget.AppCompat.Light.ActionBar.Solid.Inverse">
+        <item name="background">@color/colorPrimary</item>
+        <item name="titleTextStyle">@style/textStyle</item>
+        <item name="android:logo">@drawable/ic_launcher_foreground</item>
+        <item name="android:displayOptions">useLogo|showHome</item>
+    </style>
+
+    <style name="textStyle" parent="@style/TextAppearance.AppCompat.Widget.ActionBar.Title">
+        <item name="android:textColor">@color/colorAccent</item>
+    </style>
+
+    <style name="MarqueeTextView" parent="Widget.AppCompat.TextView">
+        <item name="android:singleLine">true</item>
+        <item name="android:ellipsize">marquee</item>
+        <item name="android:marqueeRepeatLimit">marquee_forever</item>
+        <item name="android:scrollHorizontally">true</item>
+        <item name="android:focusable">true</item>
+        <item name="android:focusableInTouchMode">true</item>
+        <item name="android:freezesText">true</item>
+    </style>
+
+</resources>

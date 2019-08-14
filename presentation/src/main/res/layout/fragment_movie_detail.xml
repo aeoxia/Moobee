@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:bind="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+                name = "viewModel"
+                type = "com.ausom.moobee.ui.movie.detail.MovieDetailViewModel"/>
+        <import type="com.ausom.moobee.R" />
+    </data>
+
+    <androidx.core.widget.NestedScrollView android:layout_width="match_parent"
+                                           android:layout_height="wrap_content">
+        <LinearLayout android:layout_width="match_parent"
+                      android:layout_height="wrap_content"
+        android:orientation="vertical">
+            <ImageView
+                    android:id="@+id/movieThumb"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:adjustViewBounds="true"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    bind:imageUrl="@{viewModel.movieModel.thumb}"
+                    bind:src="@drawable/ic_launcher_background" />
+            <TextView android:layout_width="match_parent"
+                      android:layout_height="wrap_content"
+                      android:text="@{viewModel.movieModel.subtitle}"
+                      android:padding="20dp"/>
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+</layout>
