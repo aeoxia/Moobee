@@ -40,7 +40,7 @@ inline infix fun <E, E2, V> ResultWrapper<E, V>.mapError(function: (E)-> E2): Re
         )
     }
 
-inline infix fun <E,V,V2> ResultWrapper<E, V>.flatMap(function: (V)-> ResultWrapper<E, V2>): ResultWrapper<E, V2> =
+    inline infix fun <E,V,V2> ResultWrapper<E, V>.flatMap(function: (V)-> ResultWrapper<E, V2>): ResultWrapper<E, V2> =
     when(this){
         is ResultWrapper.Success ->  function(this.value)
         is ResultWrapper.Error -> this

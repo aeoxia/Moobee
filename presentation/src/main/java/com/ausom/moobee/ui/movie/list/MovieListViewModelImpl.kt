@@ -33,7 +33,6 @@ import com.ausom.moobee.ui.base.ListItem
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.ObsoleteCoroutinesApi
-import kotlinx.coroutines.channels.consumeEach
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -53,13 +52,11 @@ class MovieListViewModelImpl @Inject constructor(
 
     @ExperimentalCoroutinesApi
     @ObsoleteCoroutinesApi
-    override fun refresh(): Job  = launch(bgDispatcher){
-        getMovies.execute().consumeEach {result->
-            result.fold({
-                throw it
-            },{
-                items.postValue(movieModelMapper.transformToViewModel(it, this@MovieListViewModelImpl))
-            })
-        }
+    override fun refresh(): Job = launch(bgDispatcher) {
+        getMovies.executeAsync<Unit>().await().fold({
+            throw it
+        }, {
+            items.postValue(movieModelMapper.transformToViewModel(it, this@MovieListViewModelImpl))
+        })
     }
 }

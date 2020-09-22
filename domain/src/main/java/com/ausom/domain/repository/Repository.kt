@@ -26,8 +26,8 @@ package com.ausom.domain.repository
 
 import com.ausom.domain.common.ResultWrapper
 import com.ausom.domain.model.Movie
-import kotlinx.coroutines.channels.ReceiveChannel
+import kotlinx.coroutines.Deferred
 
 interface Repository {
-    suspend fun getMovies(): ReceiveChannel<ResultWrapper<Exception,List<Movie>>>
+    suspend fun getMovies(): Deferred<ResultWrapper<Exception,List<Movie>>>
 }

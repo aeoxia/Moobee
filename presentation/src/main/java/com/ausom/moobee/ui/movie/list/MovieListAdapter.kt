@@ -63,10 +63,10 @@ class MovieListAdapter @Inject constructor() : BaseAdapter() {
      *
      * */
     override val viewBindingVariableMap = SparseIntArray().apply {
-        listOf(
-                R.layout.movie_item_layout
-        ).forEach { res ->
-            put(res, BR.viewModel)
-        }
+            listOf(
+                    R.layout.movie_item_layout
+            ).forEach { res ->
+                put(res, BR.viewModel)
+            }
     }
 }
